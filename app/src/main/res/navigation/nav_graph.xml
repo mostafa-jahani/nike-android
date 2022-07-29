@@ -20,11 +20,20 @@
         android:name="com.example.nikeapp.screens.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.nikeapp.screens.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
+    <action
+        android:id="@+id/actionToDetail"
+        app:destination="@id/detailFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.nikeapp.screens.favorite.FavoriteFragment"

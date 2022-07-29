@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.example.nikeapp.databinding.FragmentHomeBinding
 import com.example.nikeapp.utils.convertDpToPixel
@@ -26,13 +27,6 @@ class HomeFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-//        binding.apply {
-//            val sliderRecyclerViewHeight = (((sliderRv.measuredWidth - convertDpToPixel(32f, requireContext())) * 173) / 328).toInt()
-//            val layoutParams = sliderRv.layoutParams
-//            layoutParams.height = sliderRecyclerViewHeight
-//        }
-
         return binding.root
     }
 
@@ -45,7 +39,6 @@ class HomeFragment : Fragment() {
                 sliderAdapter.differ.submitList(it)
                 sliderRv.adapter = sliderAdapter
                 pagerHelper.attachToRecyclerView(sliderRv)
-//                sliderRv.layoutParams.height = (((sliderRv.measuredWidth - convertDpToPixel(32f, requireContext())) * 173) / 328).toInt()
                 sliderIndicator.attachToRecyclerView(sliderRv, pagerHelper)
             }
 
@@ -57,6 +50,15 @@ class HomeFragment : Fragment() {
             homeViewModel.popularProductLiveData.observe(viewLifecycleOwner) {
                 popularProductAdapter.differ.submitList(it)
                 popularProductsRv.adapter = popularProductAdapter
+            }
+
+
+
+
+            //Click
+            latestProductAdapter.setOnItemClickListener {
+                val direction = HomeFragmentDirections.actionToDetail()
+                findNavController().navigate(direction)
             }
 
         }

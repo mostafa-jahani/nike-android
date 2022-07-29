@@ -49,10 +49,25 @@ class LatestProductsAdapter @Inject constructor() : RecyclerView.Adapter<LatestP
             }
             binding.root.apply {
                 implementSpringAnimationTrait()
-                setOnClickListener {  }
+                setOnClickListener {
+                    onItemClickListener?.let { it(item) }
+                }
             }
         }
 
+    }
+
+
+
+
+
+
+
+    //On click
+    private var onItemClickListener : ((Product) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Product) -> Unit) {
+        onItemClickListener = listener
     }
 
 
