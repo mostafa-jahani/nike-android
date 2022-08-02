@@ -25,7 +25,11 @@
         android:id="@+id/detailFragment"
         android:name="com.example.nikeapp.screens.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="product"
+            app:argType="com.example.nikeapp.network.models.home.Product" />
+    </fragment>
     <action
         android:id="@+id/actionToDetail"
         app:destination="@id/detailFragment"
