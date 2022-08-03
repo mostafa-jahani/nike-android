@@ -7,53 +7,33 @@
     android:layoutDirection="rtl"
     tools:context=".screens.detail.DetailFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbarDetail"
+    <com.example.nikeapp.utils.ObservableScroll.ObservableScrollView
+        android:id="@+id/observableScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:liftOnScroll="true">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingDetail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.MaterialComponents"
-            app:contentScrim="@color/white"
-            android:fitsSystemWindows="true"
-            app:collapsedTitleTextColor="@color/black"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <com.example.nikeapp.utils.AspectRatioImageView
-                android:id="@+id/product_img"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_collapseMode="parallax"
-                android:scaleType="centerCrop"
-                app:aspectRatio="1"
-                app:aspectRatioEnabled="true"
-                app:dominantMeasurement="width"
-                tools:ignore="MissingConstraints"/>
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_detail"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                app:layout_collapseMode="pin" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.example.nikeapp.utils.AspectRatioImageView
+                    android:id="@+id/product_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="parallax"
+                    android:scaleType="centerCrop"
+                    app:aspectRatio="1"
+                    app:aspectRatioEnabled="true"
+                    app:dominantMeasurement="width"
+                    tools:ignore="MissingConstraints"/>
+
+            </FrameLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -69,7 +49,7 @@
                     android:ellipsize="end"
                     android:maxLines="2"
                     android:text="کفش کتانی زمستانه"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/previous_price_tv"
                     app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1,300,000 تومان"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,7 +71,7 @@
                     android:layout_marginTop="4dp"
                     android:text="1,120,000 تومان"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@id/previous_price_tv"
                     app:layout_constraintStart_toStartOf="@id/previous_price_tv"
                     app:layout_constraintTop_toBottomOf="@id/previous_price_tv" />
@@ -106,10 +86,53 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/productDesc"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="13sp" />
+
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+
+
+
+    </com.example.nikeapp.utils.ObservableScroll.ObservableScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:translationZ="5dp">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="16dp"
+            app:srcCompat="@drawable/ic_back" />
+
+        <ImageView
+            android:id="@+id/favoriteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@drawable/ic_favorites_24dp" />
+    </FrameLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/toolbarView"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:alpha="0"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="4dp">
+
+        <TextView
+            android:id="@+id/toolbarTitleTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:layout_marginStart="48dp"
+            tools:text="نام محصول" />
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -12,6 +12,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.example.nikeapp.databinding.FragmentDetailBinding
+import com.example.nikeapp.utils.ObservableScroll.ObservableScrollViewCallbacks
+import com.example.nikeapp.utils.ObservableScroll.ScrollState
+import com.example.nikeapp.utils.formatPrice
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,11 +30,7 @@ class DetailFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentDetailBinding.inflate(inflater, container, false)
         (activity as AppCompatActivity?)!!.apply {
-            setSupportActionBar(binding.toolbarDetail)
-            binding.collapsingDetail.setExpandedTitleColor(ContextCompat.getColor(this, android.R.color.transparent))
-            binding.collapsingDetail.setCollapsedTitleTextColor(ContextCompat.getColor(this, android.R.color.black))
-            supportActionBar!!.setHomeButtonEnabled(true)
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         }
 
         return binding.root
@@ -42,35 +41,34 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        detailViewModel.productLiveData.observe(viewLifecycleOwner) { product ->
-            binding.apply {
+        binding.apply {
+
+            productImg.post {
+                observableScrollView.addScrollViewCallbacks(object : ObservableScrollViewCallbacks {
+                    override fun onScrollChanged(scrollY: Int, firstScroll: Boolean, dragging: Boolean) {
+                        toolbarView.alpha = scrollY.toFloat() / productImg.height.toFloat()
+                        productImg.translationY = scrollY.toFloat() / 2
+                    }
+                    override fun onDownMotionEvent() {
+                    }
+                    override fun onUpOrCancelMotionEvent(scrollState: ScrollState?) {
+                    }
+                })
+            }
+
+            detailViewModel.productLiveData.observe(viewLifecycleOwner) { product ->
                 productImg.load(product.image) {
                     crossfade(true)
                     crossfade(1000)
                 }
                 productTitleTv.text = product.title
-                previousPriceTv.text = product.previous_price.toString()
-                currentPriceTv.text = product.price.toString()
-
-                collapsingDetail.isTitleEnabled = true
-                collapsingDetail.setExpandedTitleColor(ContextCompat.getColor(requireContext(), android.R.color.transparent))
-                toolbarDetail.title = product.title
-                toolbarDetail.setTitleTextColor(ContextCompat.getColor(requireContext(), android.R.color.black))
+                previousPriceTv.text = formatPrice(product.previous_price)
+                currentPriceTv.text = formatPrice(product.price)
+                toolbarTitleTv.text = product.title
             }
+
         }
 
     }
 
-
-
-    private fun translateAnimation(attr: View) {
-        val anim = TranslateAnimation(
-            0f, 0f,
-            0f, -100f
-        )
-        anim.duration = 1000
-        anim.fillAfter = true
-        attr.startAnimation(anim)
-
-    }
 }

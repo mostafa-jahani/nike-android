@@ -14,7 +14,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
-//const val KEY_PRODUCT_PARCLABLE = "productClass"
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -59,8 +58,6 @@ class HomeFragment : Fragment() {
 
             //Click
             latestProductAdapter.setOnItemClickListener {
-//                val bundle = Bundle()
-//                bundle.putParcelable(KEY_PRODUCT_PARCLABLE, it)
                 val direction = HomeFragmentDirections.actionToDetail(it)
                 findNavController().navigate(direction)
             }
