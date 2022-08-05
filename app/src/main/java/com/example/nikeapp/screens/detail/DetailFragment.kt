@@ -65,8 +65,6 @@ class DetailFragment : Fragment() {
                 previousPriceTv.text = formatPrice(product.previous_price)
                 currentPriceTv.text = formatPrice(product.price)
                 toolbarTitleTv.text = product.title
-
-                //detailViewModel.getComments(product.id)
             }
 
             detailViewModel.commentsLiveData.observe(viewLifecycleOwner) { comments ->
@@ -75,10 +73,6 @@ class DetailFragment : Fragment() {
 
                 if (comments.size > 3) viewAllCommentsBtn.visibility = View.VISIBLE
             }
-
-
-
-
 
 
 

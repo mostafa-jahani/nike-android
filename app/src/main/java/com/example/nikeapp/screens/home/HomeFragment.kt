@@ -62,6 +62,11 @@ class HomeFragment : Fragment() {
                 findNavController().navigate(direction)
             }
 
+            popularProductAdapter.setOnItemClickListener {
+                val direction = HomeFragmentDirections.actionToDetail(it)
+                findNavController().navigate(direction)
+            }
+
         }
     }
 }

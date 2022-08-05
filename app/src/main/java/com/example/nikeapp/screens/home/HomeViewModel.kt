@@ -31,12 +31,12 @@ class HomeViewModel @Inject constructor(private val repository: HomeRepository) 
     }
 
     private fun loadLatestProducts() = viewModelScope.launch {
-        val response = repository.getLatestProducts(Constants.SORT_LATEST)
+        val response = repository.getProducts(Constants.SORT_LATEST)
         if (response.isSuccessful) latestProductLiveData.postValue(response.body())
     }
 
     private fun loadPopularProducts() = viewModelScope.launch {
-        val response = repository.getLatestProducts(Constants.SORT_POPULAR)
+        val response = repository.getProducts(Constants.SORT_POPULAR)
         if (response.isSuccessful) popularProductLiveData.postValue(response.body())
     }
 

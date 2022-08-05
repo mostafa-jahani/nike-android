@@ -14,7 +14,7 @@ interface ApiService {
     suspend fun getSliders() : Response<List<Slider>>
 
     @GET("product/list")
-    suspend fun getLatestProducts(@Query("sort") sort: Int) : Response<List<Product>>
+    suspend fun getProducts(@Query("sort") sort: Int) : Response<List<Product>>
 
     @GET("comment/list")
     suspend fun getComments(@Query("product_id") productId: Int) : Response<List<Comment>>
