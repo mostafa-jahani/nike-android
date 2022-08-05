@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable-v24/ic_home.xml" value="0.1175" />
+        <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/background_comment.xml" value="0.1495" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/background_et_search.xml" value="0.13" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/bg_circle_dark.xml" value="0.1" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/bg_rounded_dark.xml" value="0.1175" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/black_radius.xml" value="0.13" />
+        <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/ic_arrow_back.xml" value="0.1495" />
+        <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/ic_back.xml" value="0.207" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/ic_cart.xml" value="0.1175" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/ic_favorites.xml" value="0.158" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/drawable/ic_favorites_24dp.xml" value="0.158" />
@@ -19,6 +22,7 @@
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/layout/fragment_favorite.xml" value="0.2546875" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/layout/fragment_profile.xml" value="0.23958333333333334" />
+        <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/layout/item_comment.xml" value="0.2546875" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/layout/item_product.xml" value="0.25364583333333335" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/layout/item_slider.xml" value="0.25364583333333335" />
         <entry key="..\:/projects/Kotlin/NikeApp/app/src/main/res/menu/menu_bottom_nav.xml" value="0.1" />

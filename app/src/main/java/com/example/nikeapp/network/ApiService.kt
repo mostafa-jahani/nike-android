@@ -1,5 +1,6 @@
 package com.example.nikeapp.network
 
+import com.example.nikeapp.network.models.Comment
 import com.example.nikeapp.network.models.home.Product
 import com.example.nikeapp.network.models.home.Slider
 import retrofit2.Response
@@ -14,4 +15,7 @@ interface ApiService {
 
     @GET("product/list")
     suspend fun getLatestProducts(@Query("sort") sort: Int) : Response<List<Product>>
+
+    @GET("comment/list")
+    suspend fun getComments(@Query("product_id") productId: Int) : Response<List<Comment>>
 }
